@@ -1,1 +1,129 @@
-Hello World
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="X-UA-Compatible" content="IE=edge">
+        <title>Pete Jones: Real Person</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="apple-touch-icon" href="apple-touch-icon.png">
+        <!-- Place favicon.ico in the root directory -->
+      <link href='http://fonts.googleapis.com/css?family=Source+Sans+Pro|Roboto+Slab:300' rel='stylesheet' type='text/css'>
+      <style>
+          * {
+            box-sizing: border-box;
+          }
+          h1, h2, h3, h4, h5, h6 {
+            font-family: 'Roboto Slab', serif;
+          }
+          h1 {
+            font-size: 30px;
+          }
+          h2 {
+            font-size: 24px;
+          }
+          body {
+            margin: 5% auto 10%;
+            width: 90%;
+            max-width: 800px;
+            font-size: 16px;
+            font-family: 'Source Sans Pro', sans-serif;
+            color: #222;
+          }
+          a {
+            color: #c60;
+          }
+          a:visited{
+            color: #c60;
+          }
+          a:hover {
+            color: #920;
+          }
+          img {
+            float: right;
+            margin: 0 0 20px 20px;
+            width: 50%;
+            max-width: 200px;
+            min-width: 100px;
+          }
+          @media screen and (min-width: 600px){
+            header {
+              float: right;
+              width: 30%;
+            }
+            img {
+              float: none;
+              width: 100%;
+            }
+            main {
+              float: left;
+              width: 70%;
+              padding-right: 10%;
+            }
+          }
+        </style>
+    </head>
+    <body>
+        <header>
+          <img src="img/pete-vectory.png" />
+          <h1>Hi! I'm Pete.</h1>
+        </header>
+        <main>
+          <section>
+            <h2>I design and build user experiences for the web.</h2>
+            <p>Responsive web apps, data visualizations, product prototypes - that kind of thing.  I spend most of my time bringing down the curve at <a title="the Midwest's most attractive software shop" href="https://livefront.com">Livefront</a>, where my clients range from rising start-ups to world-wide brands.</p>
+            <p>I also teach <a title="Responsive Design Workshops" href="https://smartfactory.com/workshops/responsive-design">Responsive Design</a> at <a title="SmartFactory" href="https://smartfactory.com">SmartFactory</a>.</p>
+          </section>
+          <section>
+            <ul>
+              <li>
+                <a href="http://stackoverflow.com/users/286599/peteorpeter" title="Pete's StackOverflow profile">Stack Overflow</a>
+              </li>
+              <li>
+                <a href="http://ux.stackexchange.com/users/3916/peteorpeter" title="Pete's UX StackExchange profile">ux.stackexchange.com</a>
+              </li>
+              <li>
+                <a href="https://www.linkedin.com/profile/view?id=41424322" title="Pete hates LinkedIn and should probably remove this.">LinkedIn</a>
+              </li>
+              <li>
+                <a href="https://github.com/peteorpeter" title="Pete's github account.">GitHub</a>
+              </li>
+            </ul>
+          </section>
+          <section>
+            <p>I live in the exurbs of Minneapolis with my vibrant wife, three marvelous daughters, and various impractical animals</p>
+            <p id="topsecret" data-a="@" data-b="gmai" data-c="mai">
+              <script>
+                (function(){
+                  var
+                      container = document.getElementById("topsecret"),
+                      message = document.createElement("a"),
+                      text = "peteorpeter",
+                      textNode;
+                  text += container.getAttribute("data-a");
+                  text += container.getAttribute("data-b");
+                  text += "l.com";
+                  textNode = document.createTextNode(text);
+                  message.appendChild(textNode);
+                  message.setAttribute('href', container.getAttribute('data-c') + 'lto' + ':' + text);
+                  container.appendChild(message);
+                })();
+              </script>
+            </p>
+          </section>
+        </main>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+        <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.1.min.js"><\/script>')</script>
+
+        <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
+        <!--<script>-->
+            <!--(function(b,o,i,l,e,r){b.GoogleAnalyticsObject=l;b[l]||(b[l]=-->
+            <!--function(){(b[l].q=b[l].q||[]).push(arguments)});b[l].l=+new Date;-->
+            <!--e=o.createElement(i);r=o.getElementsByTagName(i)[0];-->
+            <!--e.src='//www.google-analytics.com/analytics.js';-->
+            <!--r.parentNode.insertBefore(e,r)}(window,document,'script','ga'));-->
+            <!--ga('create','UA-XXXXX-X','auto');ga('send','pageview');-->
+        <!--</script>-->
+    </body>
+</html>
