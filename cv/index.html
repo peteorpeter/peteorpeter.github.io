@@ -12,26 +12,37 @@
         font-size: 13px;
         padding: 0 20px;
         color: #333;
+        position: relative;
+        display: block;
       }
 
       * {
         box-sizing: border-box;
       }
 
+      .section {
+        page-break-inside: avoid;
+        break-inside: avoid;
+        position: relative;
+        display: block;
+        margin-bottom: 30px;
+      }
+
       h1, h2, h3, h4, h5, h6, .name {
-        float: left;
-        clear: both;
+        display: block;
         width: 100%;
         font-family: 'Roboto Slab', Georgia, 'Times New Roman', serif;
         font-weight: 400;
       }
 
       li {
-        padding-bottom: 5px;
+        padding: 0;
+        margin-bottom: 5px;
       }
 
       h2 {
-        margin: 30px 0 0 0;
+        line-height: 32px;
+        margin: 0 0 20px 0;
         padding-bottom: 0;
         border-bottom: 1px solid #999;
       }
@@ -54,8 +65,8 @@
       }
 
       table {
-        float: left;
         width: 100%;
+        margin-top: 10px;
       }
 
       td {
@@ -66,7 +77,7 @@
         font-family: 'Lato', sans-serif, 'Helvetica Neue', Helvetica, Arial, sans-serif;
         float: right;
         font-style: italic;
-        line-height: 28px;
+        line-height: 36px;
         font-size: 13px;
         color: #333;
       }
@@ -74,7 +85,7 @@
       p {
         float: left;
         width: 100%;
-        margin: 20px 0 0 0;
+        margin: 0 0 20px 0;
       }
 
       a {
@@ -83,7 +94,7 @@
       }
 
       ul, ol {
-        float: left;
+        display: block;
       }
 
       .header {
@@ -202,216 +213,247 @@
     </style>
   </head>
   <body>
-    <p class="header">
-      <span class="name">Pete Jones</span>
-      <span class="thing1">
-        612.801.1664
-        <span style="color:#999">&#8226;</span>
-        <a mailto="peteorpeter@gmail.com" class="email">peteorpeter@gmail.com</a>
-      </span>
-      <span class="thing2">1382 Awatukee Tr, Hudson, WI 54016</span>
-    </p>
-    <p class="summary">
-      Designing and building in the browser for 15 years, uniting the
-      <span class="creative">creative</span>
-      and
-      <span class="tech">technical</span>
-      to deliver elegant user experiences.
-    </p>
-    <table>
-      <tbody>
-        <tr>
-          <th class="creative">Innovative UX designer</th>
-          <th class="tech">Veteran UI developer</th>
-        </tr>
-        <tr>
-          <td>
-            <ul>
-              <li>Product design / vision</li>
-              <li>Feature ideation, definition, and prioritization</li>
-              <li>Writing and refining user stories</li>
-              <li>Wireframing, flowcharts and whiteboard-level design</li>
-              <li>Interaction design</li>
-              <li>Rapid prototyping; designing in the browser</li>
-              <li>Collaborative design workshopping</li>
-              <li>Clean, polished graphic design</li>
-              <li>Data visualization design</li>
-            </ul>
-          </td>
-          <td>
-            <ul>
-              <li>Enterprise-class JavaScript development</li>
-              <li>Expert-level HTML, CSS, JS</li>
-              <li>Adept at cross-browser, multi-device, responsive, and progressive enhancement techniques</li>
-              <li>AngularJS, jQuery, select2, HighCharts, raphaelJS</li>
-              <li>RESTful API's, JSON, XML, Java, SQL</li>
-              <li>Build and pre-processing with grunt, LESS/SASS</li>
-              <li>Browser performance optimization</li>
-              <li>Interactive, data-driven visualizations in the browser</li>
-            </ul>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <!--<div class="work-header">Work Experience</div>-->
-    <h2>UX Designer + UI Developer at Barometer Inc.
-      <span class="range">2009 - Present</span>
-    </h2>
-    <p>
-      <em>Propelled</em>
-      startup from promising idea to innovative SaaS platform with millions in revenue by delivering user experiences
-      consistently described as innovative and elegant by C-level decision-makers, everyday users, and industry
-      analysts. BarometerIT provides a unified, cross-discipline map of enterprise IT ecosystems.
-    </p>
-    <table style="margin-top: 10px">
-      <tr>
-        <th class="creative">UX Designer</th>
-        <th class="tech">UI Developer</th>
-      <tr>
-        <td>
-          <ul>
-            <li>Lead high-level UX design, collaborating with founders, product managers, sales and developers to refine
-              the product
-            </li>
-            <li>Filled acres of whiteboard and generated user stories, workflows and low-fidelity wireframes that became
-              the blueprints for the development team
-            </li>
-            <li>Generated high-fidelity static mockups for rapid feedback and to fuel sales excitement</li>
-            <li>Designed complex interactions
-              <em>in the browser</em>
-              in order to capture true look and feel as well as key interaction details
-            </li>
-            <li>Handled interaction design decisions large and small, balancing user experience and technical
-              limitations
-            </li>
-            <li>Invented novel interactive data visualizations, many of which became critical marketplace
-              differentiators. Often single-handedly grew concepts from whiteboard to prototype to production code
-            </li>
-          </ul>
-        </td>
-        <td>
-          <ul>
-            <li>Architected and developed production HTML, CSS, JS, working closely with other developers to integrate
-              frontend and backend harmoniously
-            </li>
-            <li>Optimized browser performance, automated front-end build processes, and conquered score upon score of
-              Internet Explorer bugs
-            </li>
-            <li>Built out an assortment of highly interactive, data-driven visualizations, including a network (node and
-              edge) diagram with panning, zooming and on-demand data fetching, a "connectivity" diagram allowing
-              drilling in of nested relationships between entities, box-style containment diagrams, and a tool that
-              allows users to upload Visio documents and mark them up with "live" relationships to our data objects
-            </li>
-            <li>Provided expertise, guidance, and training to the development team on all things front-end</li>
-            <ul>
-        </td>
-      </tr>
-    </table>
-    <h3 class="spotlight-label">Recent Highlight at Barometer, Inc.:
-      <em>Project Phoenix</em>
-    </h3>
-    <div class="spotlight">
-      <p>In 2013, I co-lead an ambitious redesign and rebuild of not only the UI but the product itself to make the app
-        more responsive, reunify the expansive feature-set, streamline common use cases, modernize the technology stack,
-        and introduce innovative data exploration features.
+    <div class="section">
+      <p class="header">
+        <span class="name">Pete Jones</span>
+        <span class="thing1">
+          612.801.1664
+          <span style="color:#999">&#8226;</span>
+          <a mailto="peteorpeter@gmail.com" class="email">peteorpeter@gmail.com</a>
+        </span>
+        <span class="thing2">1382 Awatukee Tr, Hudson, WI 54016</span>
+      </p>
+      <p class="summary">
+        Designing and building in the browser for 15 years, uniting the
+        <span class="creative">creative</span>
+        and
+        <span class="tech">technical</span>
+        to craft meaningful user experiences.
       </p>
       <table>
+        <tbody>
+          <tr>
+            <th class="creative">Innovative UX designer</th>
+            <th class="tech">Veteran UI developer</th>
+          </tr>
+          <tr>
+            <td>
+              <ul>
+                <li>Product design / vision</li>
+                <li>Collaborative design</li>
+                <li>Rapid prototyping</li>
+                <li>Feature ideation, definition, and prioritization</li>
+                <li>Writing and refining user stories</li>
+                <li>Wireframing, flowcharts and whiteboard-level design</li>
+                <li>Interaction design</li>
+                <li>Harnessing user feedback</li>
+                <li>Data visualization design</li>
+              </ul>
+            </td>
+            <td>
+              <ul>
+                <li>Expert-level HTML, CSS, JS</li>
+                <li>JavaScript app development and architecture</li>
+                <li>Cross-browser, multi-device, responsive, and progressive enhancement techniques</li>
+                <li>Comfortable with fancy new tools like React, Angular, Vue</li>
+                <li>Handy with plain old vanilla JS</li>
+                <li>Unafraid of venturing into backend development</li>
+                <li>Frontend build tools like gulp, webpack, LESS/SASS</li>
+                <li>Interactive, data-driven visualizations in the browser</li>
+                <!--<li>Browser performance optimization</li>-->
+              </ul>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <!--<div class="work-header">Work Experience</div>-->
+    <div class="section">
+      <h2>UX + UI Consultant at Pete Jones, Inc.
+        <span class="range">2014 - Present</span>
+      </h2>
+      <p>I split my time between client work with Livefront – a Minneapolis-based boutique software agency – and leading
+        UI Design and Development at BarometerIT – a SaaS product in the Enterprise IT Management space.
+      </p>
+      <p>
+        <strong>With Livefront</strong>
+        , I am privileged to collaborate with a wide array of smart clients, from early startups to fortune 500
+        companies, providing:
+      <ul>
+        <li>Collaborative product design and prototyping</li>
+        <li>Responsive design, development and training</li>
+        <li>Data visualization design and implementation</li>
+        <li>Javascript application architecture and development</li>
+      </ul>
+      <p style="margin-top: 0px">
+        Some recent highlights of my Livefront work:
+      </p>
+      <ul>
+        <li>Co-design and development for a sales tool for Jamf Software, live in Apple Stores in twelve countries.</li>
+        <li>Co-design and UI development for startup SaaS products, including an app for improving team dynamics, a tool
+          for helping teachers target interventions, and data visualizations for a machine-learning system.
+        </li>
+        <li>Lead development of the Betty Crocker Cookbook apps for Android and iOS.</li>
+        <li>Co-design and development of a pair of browser-based games for the Minnesota Twins, available for fans to
+          play on giant touchscreens at Target field (!).
+        </li>
+        <li>Coached developers and non-developers in responsive design in 1-on-1 and larger workshop settings.</li>
+      </ul>
+    </div>
+    <div class="section">
+      <p>
+        <strong>With BarometerIT</strong>
+        , I collaborate with management, developers, support and users to invent and deliver new features and improve
+        the existing experience. Gartner positioned BarometerIT as a "Visionary" product in 2015 and 2016.
+      </p>
+      <p style="">Some recent highlights of my BarometerIT work:</p>
+      <ul>
+        <li>Beefed up visualization with customizable lifecycle timelines, scatter plots, and flexible relationship
+          diagrams.
+        </li>
+        <li>Strengthened the information hierarchy with a revised entity layout.</li>
+        <li>Refashioned divergent social features into a common UI pattern, easing data upkeep and communication.</li>
+        <li>Eased new-user introductions with friendlier entry-point pages and new features allowing tenants to
+          customize their goals and priorities.
+        </li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>UX Designer + UI Developer at Barometer Inc.
+        <span class="range">2009 - 2014</span>
+      </h2>
+      <p>
+        Helped propel startup from promising idea to innovative SaaS platform with millions in revenue by delivering
+        user experiences praised by C-level decision-makers, everyday users, and industry analysts. BarometerIT provides
+        a unified, cross-discipline map of enterprise IT ecosystems.
+      </p>
+      <table style="margin-top: 10px">
+        <tr>
+          <th class="creative">UX Designer</th>
+          <th class="tech">UI Developer</th>
         <tr>
           <td>
             <ul>
-              <li>New cleaner design language and app layout</li>
-              <li>Invented "pivot" mechanism for intuitive exploration of relationships</li>
-              <li>Designed cross-cutting features like "watch" and a dynamic sidebar for information overlays</li>
-              <li>Re-prioritized information architecture and streamlined navigation</li>
-              <li>Created a working prototype to iterate on the look, feel and interactions and generate excitement on
-                the team
+              <li>Lead high-level UX design, collaborating with founders, product managers, sales and developers to
+                refine the product
+              </li>
+              <li>Filled acres of whiteboard and generated user stories, workflows and low-fidelity wireframes that
+                became the blueprints for the development team
+              </li>
+              <li>Generated high-fidelity static mockups for rapid feedback and to fuel sales excitement</li>
+              <li>Designed complex interactions
+                <em>in the browser</em>
+                in order to capture true look and feel as well as key interaction details
+              </li>
+              <li>Handled interaction design decisions large and small, balancing user experience and technical
+                limitations
+              </li>
+              <li>Invented novel interactive data visualizations, many of which became critical marketplace
+                differentiators. Often single-handedly grew concepts from whiteboard to prototype to production code
               </li>
             </ul>
           </td>
           <td>
             <ul>
-              <li>Technical design and development of front-end rebuild in AngularJS</li>
-              <li>Integrated client with RESTful JSON API, built additional endpoints and backend services</li>
-              <li>Nearly eliminated image files from front-end code in favor of pure CSS and a custom webfont for
-                iconography
+              <li>Architected and developed production HTML, CSS, JS, working closely with other developers to integrate
+                frontend and backend harmoniously
               </li>
-              <li>Migrated DOCTYPE from XHTML to HTML(5)</li>
-              <li>Automated the front-end build process node, grunt and assorted grunt plugins</li>
+              <li>Optimized browser performance, automated front-end build processes, and conquered score upon score of
+                Internet Explorer bugs
+              </li>
+              <li>Built out an assortment of highly interactive, data-driven visualizations, including a network (node
+                and edge) diagram with panning, zooming and on-demand data fetching, a "connectivity" diagram allowing
+                drilling in of nested relationships between entities, box-style containment diagrams, and a tool that
+                allows users to upload Visio documents and mark them up with "live" relationships to our data objects
+              </li>
+              <li>Provided expertise, guidance, and training to the development team on all things front-end</li>
             </ul>
           </td>
         </tr>
       </table>
     </div>
-    <h2 id="webdesigneratsmalltownwebdesign">Freelance UI developer and designer
-      <span class="range">(sporadic) 2001 - present</span>
-    </h2>
-    <ul>
-      <li>Worked nights, weekends and occasionally full-time, designing and building widgets, web apps, and brochure
-        websites for SMB's and non-profits as an army of one
-      </li>
-      <li>Most recently, executed development of a new list-designer widget with drag-and-drop sorting and in-place
-        editing for Modern Survey, that worked as smoothly on an iPad as it did in IE8
-      </li>
-    </ul>
-    <h2 id="manageratrichardostoutconstruction">Manager at Richard O Stout Construction
-      <span class="range">2004 - 2009</span>
-    </h2>
-    <ul>
-      <li>General manager at a residential and light commercial construction and real-estate development company</li>
-      <li>Designed and managed construction of office build-outs for SMB's</li>
-      <li>Contributed to designs of new real-estate developments</li>
-      <li>Streamlined company processes to harness web-based tools and a custom VOIP system</li>
-      <li>Generated marketing strategies and materials</li>
-      <li>Supported existing and prospective partners and customers</li>
-      <li>Directed property management team</li>
-    </ul>
-    <h2 id="owneratblondiescafe">Owner at Blondies Cafe
-      <span class="range">2004 - 2007</span>
-    </h2>
-    <ul>
-      <li>Architectural design and general-contracting for the major renovation of a photo lab into a charming cafe, the
-        life-long dream of my wife and her sister
-      </li>
-      <li>Developed branding and marketing materials</li>
-      <li>Washed dishes and taste-tasted recipes in my spare time
-        <span style="font-size: 18px">&#9786;</span>
-      </li>
-    </ul>
-    <h2 id="internarchitecttechnologistatportharchitects">Intern Architect / Technologist at Porth Architects
-      <span class="range">2003 - 2004</span>
-    </h2>
-    <ul>
-      <li>Architectural drafting and design for residential construction and remodeling.</li>
-      <li>Re-designed, re-built and re-launched company website</li>
-      <li>General IT support and workflow automation</li>
-    </ul>
-    <h2 id="technologistatneedhampublicschools">Technologist at Needham Public Schools
-      <span class="range">2002 - 2003</span>
-    </h2>
-    <ul>
-      <li>General IT support for teachers, administrators and students</li>
-      <li>Collaborated with educators to craft and execute technically-challenging lesson plans involving web design,
-        digital print design, and digital video production
-      </li>
-      <li>Trained teachers in digital production techniques informally and in a dedicated summer program</li>
-    </ul>
-    <h2>BA in Art, Williams College
-      <span class="range">2001</span>
-    </h2>
-    <ul>
-      <li>
-        Negotiated my own "contract" major that emphasized architecture and digital art.
-      </li>
-      <li>
-        Learned the Web 1.0 world -
-        <em> got hooked</em>
-        .
-      </li>
-      <li>Obsessed over a variety of digital art and early web experiments, including a make-your-own creature game with
-        cellular-automata leanings, a game based on surrealist art of the early 20th century, an interactive
-        installation about digital video surveillance, and a maddening JavaScript experiment that took users on a
-        "vacation" through a progression of *gulp* nested &lt;FRAME&gt;'s!
-      </li>
-    </ul>
+    <div class="section">
+      <h2 id="webdesigneratsmalltownwebdesign">Freelance UI developer and designer
+        <span class="range">2001 - 2009</span>
+      </h2>
+      <ul>
+        <li>Worked nights, weekends and occasionally full-time, designing and building widgets, web apps, and brochure
+          websites for SMB's and non-profits as an army of one
+        </li>
+        <li>Most recently, executed development of a new list-designer widget with drag-and-drop sorting and in-place
+          editing for Modern Survey, that worked as smoothly on an iPad as it did in IE8
+        </li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2 style="" id="manageratrichardostoutconstruction">Manager at Richard O Stout Construction
+        <span class="range">2004 - 2009</span>
+      </h2>
+      <ul>
+        <li>General manager at a residential and light commercial construction and real-estate development company</li>
+        <li>Designed and managed construction of office build-outs for SMB's</li>
+        <li>Contributed to designs of new real-estate developments</li>
+        <li>Streamlined company processes to harness web-based tools and a custom VOIP system</li>
+        <li>Generated marketing strategies and materials</li>
+        <li>Supported existing and prospective partners and customers</li>
+        <li>Directed property management team</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2 id="owneratblondiescafe">Owner at Blondies Cafe
+        <span class="range">2004 - 2007</span>
+      </h2>
+      <ul>
+        <li>Architectural design and general-contracting for the major renovation of a photo lab into a charming cafe,
+          the life-long dream of my wife and her sister
+        </li>
+        <li>Developed branding and marketing materials</li>
+        <li>Washed dishes and taste-tasted recipes in my spare time
+          <span style="font-size: 18px">&#9786;</span>
+        </li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2 id="internarchitecttechnologistatportharchitects">Intern Architect / Technologist at Porth Architects
+        <span class="range">2003 - 2004</span>
+      </h2>
+      <ul>
+        <li>Architectural drafting and design for residential construction and remodeling.</li>
+        <li>Re-designed, re-built and re-launched company website</li>
+        <li>General IT support and workflow automation</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2 id="technologistatneedhampublicschools">Technologist at Needham Public Schools
+        <span class="range">2002 - 2003</span>
+      </h2>
+      <ul>
+        <li>General IT support for teachers, administrators and students</li>
+        <li>Collaborated with educators to craft and execute technically-challenging lesson plans involving web design,
+          digital print design, and digital video production
+        </li>
+        <li>Trained teachers in digital production techniques informally and in a dedicated summer program</li>
+      </ul>
+    </div>
+    <div class="section">
+      <h2>BA in Art, Williams College
+        <span class="range">2001</span>
+      </h2>
+      <ul>
+        <li>
+          Negotiated my own "contract" major that emphasized architecture and digital art.
+        </li>
+        <li>
+          Learned the Web 1.0 world -
+          <em> got hooked</em>
+          .
+        </li>
+        <li>Obsessed over a variety of digital art and early web experiments, including a make-your-own creature game
+          with cellular-automata leanings, a game based on surrealist art of the early 20th century, an interactive
+          installation about digital video surveillance, and a maddening JavaScript experiment that took users on a
+          "vacation" through a progression of *gulp* nested &lt;FRAME&gt;'s!
+        </li>
+      </ul>
+    </div>
   </body>
 </html>
