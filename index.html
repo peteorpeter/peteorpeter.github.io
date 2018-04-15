@@ -44,14 +44,19 @@
           a:hover {
             color: #920;
           }
-          img {
+          .image {
             float: right;
             margin: 0 0 20px 20px;
-            width: 33%;
             border: 2px solid #eee;
             border-radius: 50%;
             max-width: 200px;
-            min-width: 100px;
+            width: 100px;
+            height: 100px;
+            background: url(./img/pete-headshot-1.jpg) center center;
+            background-size:  cover;
+          }
+          .image:hover {
+            background-image: url(./img/pete-headshot-2.jpg);
           }
           .freelance {
             margin: 30px 0;
@@ -102,9 +107,10 @@
             h2 {
               font-size: 24px;
             }
-            img {
+            .image {
               float: none;
-              width: 100%;
+              width: 200px;
+              height: 200px
             }
             main {
               float: left;
@@ -119,7 +125,7 @@
     </head>
     <body>
         <header>
-          <img src="img/pete-headshot.jpg" />
+          <div class="image" title="Life is far too serious to live through without humor"></div>
           <h1>Hi! I'm Pete.</h1>
         </header>
         <main>
