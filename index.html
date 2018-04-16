@@ -45,18 +45,33 @@
             color: #920;
           }
           .image {
+            position: relative;
             float: right;
             margin: 0 0 20px 20px;
             border: 2px solid #eee;
             border-radius: 50%;
-            max-width: 200px;
             width: 100px;
             height: 100px;
             background: url(./img/pete-headshot-1.jpg) center center;
             background-size:  cover;
+            overflow: hidden;
           }
-          .image:hover {
-            background-image: url(./img/pete-headshot-2.jpg);
+          .image::after {
+            content: '';
+            display: block;
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100px;
+            height: 100px;
+            background: url(./img/pete-headshot-2.jpg) center center;
+            background-size:  cover;
+            opacity: 0;
+            transition: opacity 0.2s;
+          }
+
+          .image:hover::after {
+            opacity: 1;
           }
           .freelance {
             margin: 30px 0;
@@ -107,7 +122,7 @@
             h2 {
               font-size: 24px;
             }
-            .image {
+            .image, .image::after {
               float: none;
               width: 200px;
               height: 200px
@@ -125,7 +140,7 @@
     </head>
     <body>
         <header>
-          <div class="image" title="Life is far too serious to live through without humor"></div>
+          <div class="image" title="Life is too serious.  Humor is a moral imperative."></div>
           <h1>Hi! I'm Pete.</h1>
         </header>
         <main>
@@ -138,7 +153,7 @@
               <li>Product design and prototyping</li>
             </ul>
             <p>I spend much of my time at <a title="the Midwest's most attractive software shop" href="https://livefront.com">Livefront</a>, where my clients range from rising start-ups to world-wide brands.</p>
-            <p>I also teach <a title="Responsive Design Workshops" href="https://smartfactory.com/workshops/responsive-design">Responsive Design</a> at <a title="SmartFactory" href="https://smartfactory.com">SmartFactory</a>.</p>
+            <p>I also lead UI/UX at <a title="BarometerIT" href="https://www.changepoint.com/products/barometerit/">Barometer IT</a>. (But I am <i>not</i>  responsible for their marketing website!)</p>
           </section>
 
           <section>
