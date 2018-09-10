@@ -1,5 +1,5 @@
-0.0.0.0 www.youtube.com
-0.0.0.0 youtube.com
-0.0.0.0 m.youtube.com
-0.0.0.0 www.reddit.com
-0.0.0.0 reddit.com
+127.0.0.1 www.youtube.com
+127.0.0.1 youtube.com
+127.0.0.1 m.youtube.com
+127.0.0.1 www.reddit.com
+127.0.0.1 reddit.com
