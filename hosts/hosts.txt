@@ -3,4 +3,8 @@
 127.0.0.1 m.youtube.com
 127.0.0.1 www.reddit.com
 127.0.0.1 reddit.com
+127.0.0.1 old.reddit.com
 127.0.0.1 news.google.com
+127.0.0.1 facebook.com
+127.0.0.1 m.facebook.com
+127.0.0.1 www.facebook.com
