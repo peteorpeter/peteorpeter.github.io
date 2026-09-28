@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#e9ede2" />
+    <title>Making Pretty Toys</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main>
+      <header class="masthead">
+        <div>
+          <p class="eyebrow">A small living experiment</p>
+          <h1>Making Pretty Toys</h1>
+        </div>
+        <p class="introduction">Make a little thing. Let it go. See what it becomes.</p>
+      </header>
+
+      <section class="workspace" aria-label="Creature workshop and habitat">
+        <aside class="workbench">
+          <div class="panel-heading">
+            <div>
+              <p class="step">First, make one</p>
+              <h2>A tiny body</h2>
+            </div>
+            <button class="text-button" id="clear-button" type="button">Begin again</button>
+          </div>
+
+          <div class="nursery" id="nursery">
+            <svg id="builder" viewBox="0 0 300 300" role="img" aria-label="Your unfinished organism">
+              <circle class="builder-orbit" cx="150" cy="150" r="82" />
+              <g id="builder-parts"></g>
+            </svg>
+            <p class="nursery-note" id="nursery-note">Choose a shape below, then place it here.</p>
+          </div>
+
+          <div class="part-tray" aria-label="Available shapes">
+            <button class="part-choice" data-shape="orb" aria-label="Round shape">
+              <svg viewBox="0 0 64 64"><ellipse cx="32" cy="32" rx="20" ry="17" /></svg>
+            </button>
+            <button class="part-choice" data-shape="capsule" aria-label="Capsule shape">
+              <svg viewBox="0 0 64 64"><rect x="10" y="23" width="44" height="18" rx="9" /></svg>
+            </button>
+            <button class="part-choice" data-shape="petal" aria-label="Petal shape">
+              <svg viewBox="0 0 64 64"><path d="M32 8 C50 18 52 42 32 56 C12 42 14 18 32 8Z" /></svg>
+            </button>
+            <button class="part-choice" data-shape="spike" aria-label="Spiked shape">
+              <svg viewBox="0 0 64 64"><path d="M32 6 L40 23 L58 18 L47 34 L58 48 L39 44 L30 59 L25 41 L7 45 L18 30 L8 15 L27 21Z" /></svg>
+            </button>
+            <button class="part-choice" data-shape="ring" aria-label="Ring shape">
+              <svg viewBox="0 0 64 64"><circle cx="32" cy="32" r="20" fill="none" stroke="currentColor" stroke-width="10" /></svg>
+            </button>
+          </div>
+
+          <div class="palette" id="palette" aria-label="Available colors"></div>
+
+          <button class="release-button" id="release-button" type="button" disabled>
+            Release into the dish
+          </button>
+          <p class="quiet-hint">Their looks matter, though they won’t tell you how.</p>
+        </aside>
+
+        <section class="habitat-panel">
+          <div class="panel-heading habitat-heading">
+            <div>
+              <p class="step">Then, watch</p>
+              <h2>The dish</h2>
+            </div>
+            <p class="population" id="population">Nothing lives here yet</p>
+          </div>
+          <div class="dish-wrap">
+            <canvas id="dish" aria-label="Living petri dish"></canvas>
+            <div class="empty-dish" id="empty-dish">
+              <span>Your creatures will meet here.</span>
+              <small>Tap the water to stir it.</small>
+            </div>
+          </div>
+        </section>
+      </section>
+    </main>
+
+    <script type="module" src="app.js"></script>
+  </body>
+</html>
