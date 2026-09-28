@@ -16,6 +16,7 @@ const motionProfiles = {
   ring: { radial: 1.05, lag: 0.92, turn: 6, squish: 0.075, tempo: 0.58 }
 };
 const canvasOutlines = new Map();
+const livingColorCache = new WeakMap();
 
 const builder = document.querySelector("#builder");
 const builderParts = document.querySelector("#builder-parts");
@@ -24,6 +25,9 @@ const releaseButton = document.querySelector("#release-button");
 const clearButton = document.querySelector("#clear-button");
 const dish = document.querySelector("#dish");
 const context = dish.getContext("2d");
+const shadowGradient = context.createRadialGradient(0, 0, 3, 0, 0, 70);
+shadowGradient.addColorStop(0, "rgba(35, 62, 44, .13)");
+shadowGradient.addColorStop(1, "rgba(35, 62, 44, 0)");
 const emptyDish = document.querySelector("#empty-dish");
 const populationLabel = document.querySelector("#population");
 
@@ -395,15 +399,20 @@ function partVitality(creature, part) {
 }
 
 function livingColor(creature, part) {
+  const tick = Math.floor(habitatAge * 12);
+  const cached = livingColorCache.get(part);
+  if (cached?.creatureId === creature.id && cached.tick === tick) return cached.color;
   const pigment = part.pigment || hexToOklch(part.color);
   const progress = creature.age / creature.lifespan;
   const oldAge = smoothstep(clamp((progress - 0.62) / 0.38, 0, 1));
   const breathing = Math.sin(creature.pulse * 0.72 + part.breathPhase) * 0.012;
-  return oklchToHex({
+  const color = oklchToHex({
     ...pigment,
     lightness: clamp(pigment.lightness + breathing, 0.2, 0.95),
     chroma: pigment.chroma * (1 - oldAge * 0.16)
   });
+  livingColorCache.set(part, { creatureId: creature.id, tick, color });
+  return color;
 }
 
 function animatedPart(creature, part) {
@@ -445,9 +454,11 @@ function drawOrganism(creature) {
   context.translate(creature.x, creature.y);
   context.rotate(creature.rotation);
   context.scale(creature.scale * pulse, creature.scale / pulse);
-  context.shadowColor = "rgba(35, 62, 44, .14)";
-  context.shadowBlur = 8;
-  context.shadowOffsetY = 3;
+  context.save();
+  context.translate(0, 5);
+  context.fillStyle = shadowGradient;
+  context.fillRect(-70, -70, 140, 140);
+  context.restore();
   for (const part of creature.parts) {
     drawPart(context, animatedPart(creature, part), partVitality(creature, part), livingColor(creature, part));
   }
