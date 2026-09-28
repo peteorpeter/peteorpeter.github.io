@@ -94,8 +94,8 @@ function makeOutline(shape) {
 
   if (shape === "orb") return loop(radialLoop(9, 23, 10, spread(3), spread(3)));
   if (shape === "capsule") return loop([
-    point(-27, -8), point(-15, -14), point(5, -11), point(24, -5),
-    point(29, 5), point(12, 13), point(-8, 11), point(-28, 4)
+    point(-34, -8), point(-19, -14), point(6, -11), point(30, -5),
+    point(36, 5), point(15, 13), point(-10, 11), point(-35, 4)
   ]);
   if (shape === "petal") return loop([
     point(-4, -30, 2), point(8, -24), point(18, -9), point(22, 9), point(12, 24),
@@ -201,7 +201,7 @@ function createPalette() {
 document.querySelectorAll(".part-choice").forEach((button, index) => {
   if (index === 0) button.classList.add("selected");
   const icon = button.querySelector("svg");
-  icon.setAttribute("viewBox", "-43 -43 86 86");
+  icon.setAttribute("viewBox", button.dataset.shape === "capsule" ? "-48 -43 96 86" : "-43 -43 86 86");
   const path = document.createElementNS(SVG_NS, "path");
   path.setAttribute("d", makeOutline(button.dataset.shape));
   path.setAttribute("fill-rule", "evenodd");
