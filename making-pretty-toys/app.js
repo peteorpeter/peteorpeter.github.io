@@ -226,7 +226,7 @@ function makeSvgPart(part) {
 function renderDraft() {
   builderParts.replaceChildren(...draft.map(makeSvgPart));
   nurseryNote.hidden = draft.length > 0;
-  releaseButton.disabled = draft.length < 2;
+  releaseButton.disabled = draft.length < 1;
 }
 
 builder.addEventListener("click", event => {
@@ -300,7 +300,7 @@ function temperament(parts) {
     cohesion: clamp(1.15 - spread / count / 100 + roundness / count * 0.3, 0.35, 1.25),
     affinity: clamp(0.25 + roundness / count * 0.7, 0.2, 1),
     aggression: clamp(0.05 + spikes / count * 1.5, 0.05, 1),
-    fertility: clamp(0.45 + count / 14 + roundness / count * 0.2, 0.35, 1.1)
+    fertility: clamp((count === 1 ? 0.52 : count === 2 ? 0.95 : count === 3 ? 1.05 : 0.78) + roundness / count * 0.12, 0.5, 1.2)
   };
 }
 
@@ -323,6 +323,8 @@ function createOrganism(sourceParts, x, y, generation = 0) {
     id: nextId++, parts, traits, x, y,
     vx: Math.cos(angle) * traits.motility * 12,
     vy: Math.sin(angle) * traits.motility * 12,
+    heading: angle,
+    steerTimer: 1 + random() * 2,
     rotation: random() * Math.PI * 2,
     spin: (random() - 0.5) * (0.35 + (1 - traits.cohesion) * 0.5),
     age: 0,
@@ -463,7 +465,9 @@ function shed(creature, part) {
     vy: creature.vy * 0.3 + (random() - 0.5) * 14,
     age: 0,
     lifespan: 28 + random() * 30,
-    rotation: (part.rotation || 0) + random() * 90
+    birthOpacity: partVitality(creature, part),
+    birthScale: creature.scale,
+    rotation: (part.rotation || 0) + creature.rotation * 180 / Math.PI
   });
 }
 
@@ -472,7 +476,7 @@ function die(creature) {
 }
 
 function bud(parent) {
-  if (organisms.length >= 38 || parent.parts.length < 2) return;
+  if (organisms.length >= 38) return;
   const inherited = parent.parts.map(part => ({ ...part }));
   if (random() < 0.65) {
     const index = Math.floor(random() * inherited.length);
@@ -513,23 +517,52 @@ function updateOrganisms(dt, size) {
     creature.pulse += dt * (1.8 + creature.traits.motility);
     creature.rotation += creature.spin * dt;
     creature.scale += (creature.targetScale - creature.scale) * evolutionDt * 0.5;
-    creature.energy += evolutionDt * (0.004 + creature.traits.fertility * 0.004);
-    const wander = 0.8 + creature.traits.motility * 1.5;
-    creature.vx += Math.cos(creature.pulse * 0.37 + creature.id) * wander * dt;
-    creature.vy += Math.sin(creature.pulse * 0.31 + creature.id * 2) * wander * dt;
-    const speed = Math.hypot(creature.vx, creature.vy);
-    const maxSpeed = 11 + creature.traits.motility * 23;
-    if (speed > maxSpeed) { creature.vx *= maxSpeed / speed; creature.vy *= maxSpeed / speed; }
+    creature.energy += evolutionDt * (0.008 + creature.traits.fertility * 0.014);
+    creature.steerTimer -= dt;
+    if (creature.steerTimer <= 0) {
+      creature.steerTimer = 1.8 + random() * 2.8;
+      const wanderAngle = creature.heading + spread(1.6);
+      let headingX = Math.cos(wanderAngle);
+      let headingY = Math.sin(wanderAngle);
+      let neighborX = 0;
+      let neighborY = 0;
+      let nearby = 0;
+      for (const neighbor of organisms) {
+        if (neighbor === creature) continue;
+        const dx = neighbor.x - creature.x;
+        const dy = neighbor.y - creature.y;
+        const distance = Math.hypot(dx, dy);
+        if (distance < 140 && distance > 1) {
+          const influence = (1 - distance / 140) * (creature.traits.affinity * 0.8 - creature.traits.aggression * 0.25);
+          neighborX += dx / distance * influence;
+          neighborY += dy / distance * influence;
+          nearby++;
+        }
+      }
+      headingX += neighborX / Math.max(1, nearby);
+      headingY += neighborY / Math.max(1, nearby);
+      creature.heading = Math.atan2(headingY, headingX);
+    }
+    const wallMargin = 65;
+    const wallX = clamp((wallMargin - creature.x) / wallMargin, 0, 1) - clamp((wallMargin - (size.width - creature.x)) / wallMargin, 0, 1);
+    const wallY = clamp((wallMargin - creature.y) / wallMargin, 0, 1) - clamp((wallMargin - (size.height - creature.y)) / wallMargin, 0, 1);
+    const directionX = Math.cos(creature.heading) + wallX * 2.5;
+    const directionY = Math.sin(creature.heading) + wallY * 2.5;
+    const directionLength = Math.hypot(directionX, directionY) || 1;
+    const desiredSpeed = 8 + creature.traits.motility * 13;
+    const steering = Math.min(1, dt * 1.4);
+    creature.vx += (directionX / directionLength * desiredSpeed - creature.vx) * steering;
+    creature.vy += (directionY / directionLength * desiredSpeed - creature.vy) * steering;
     creature.x += creature.vx * dt;
     creature.y += creature.vy * dt;
     const radius = 30 * creature.scale;
     if (creature.x < radius || creature.x > size.width - radius) {
-      creature.vx *= -0.82;
       creature.x = clamp(creature.x, radius, size.width - radius);
+      creature.vx = 0;
     }
     if (creature.y < radius || creature.y > size.height - radius) {
-      creature.vy *= -0.82;
       creature.y = clamp(creature.y, radius, size.height - radius);
+      creature.vy = 0;
     }
 
     for (const ripple of ripples) {
@@ -552,7 +585,7 @@ function updateOrganisms(dt, size) {
       }
     }
 
-    if (creature.energy > 1 && creature.age > 12 && creature.cooldown <= 0 && random() < evolutionDt * 0.17) bud(creature);
+    if (creature.energy > 1 && creature.age > 12 && creature.cooldown <= 0 && random() < evolutionDt * (0.14 + creature.traits.fertility * 0.12)) bud(creature);
   }
 
   for (let i = 0; i < organisms.length; i++) {
@@ -661,7 +694,8 @@ function frame(now) {
   fragments.forEach(fragment => {
     context.save();
     context.translate(fragment.x, fragment.y);
-    drawPart(context, { ...fragment, x: 0, y: 0 }, clamp(1 - fragment.age / fragment.lifespan, 0, 1) * 0.82);
+    drawPart(context, { ...fragment, x: 0, y: 0, scale: (fragment.scale || 1) * fragment.birthScale },
+      fragment.birthOpacity * clamp(1 - fragment.age / fragment.lifespan, 0, 1));
     context.restore();
   });
   organisms.forEach(drawOrganism);
